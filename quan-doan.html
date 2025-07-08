@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Quân Đoàn Free Fire - YTB丶ThinhTC</title>
+  <style>
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+
+    header {
+  background: linear-gradient(to right, #2b8eff, #2b8eff);
+  color: white;
+  text-align: center;
+  padding: 40px 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+    header h1 {
+      margin: 0;
+      font-size: 32px;
+    }
+
+    header img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      margin-bottom: 10px;
+      box-shadow: 0 0 10px white;
+    }
+
+.button {
+  background-color: #4ba8ff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-weight: bold;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(214, 110, 255, 0.3);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+    .buttons button {
+      display: inline-block;
+      padding: 10px 25px;
+      margin: 10px;
+      border-radius: 30px;
+      background-color: white;
+      color: #2196f3;
+      font-weight: bold;
+      border: 2px solid #2196f3;
+      transition: 0.3s ease;
+      cursor: pointer;
+    }
+
+    .buttons button:hover {
+      background-color: #ffffff;
+      color: rgb(253, 12, 12);
+    }
+
+    section {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+      animation: fadeIn 1s ease;
+    }
+
+    section h2 {
+      color: #2196f3;
+      margin-bottom: 10px;
+    }
+
+    .member-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 10px;
+    }
+
+    .member-card {
+      flex: 1 1 calc(33.3% - 20px);
+      background: #e3f2fd;
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: 0.2s ease;
+    }
+
+    .member-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #fafafa;
+      color: #777;
+      font-size: 14px;
+      margin-top: 40px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    input {
+      padding: 10px;
+      width: 90%;
+      margin: 8px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    .form-box {
+      margin: 20px auto;
+      max-width: 400px;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+
+    #joinBtn {
+      display: block;
+      margin: 0 auto 20px;
+      padding: 10px 20px;
+      background: #2196f3;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    #joinBtn:hover {
+      background: #1976d2;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      .member-card {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>QUÂN ĐOÀN FREE FIRE - YTB丶ThinhTC</h1>
+    <p>"Đoàn kết - Kỷ luật - Kỹ năng - YTB ThinhTCVlog"</p>
+    <div class="buttons" id="authButtons">
+      <button onclick="showRegister()">Đăng ký</button>
+      <button onclick="showLogin()">Đăng nhập</button>
+    </div>
+    <div id="welcomeBox" class="hidden">
+      <p>Chào mừng, <span id="username"></span>!</p>
+      <button onclick="logout()">Đăng xuất</button>
+    </div>
+  </header>
+
+  <div id="registerBox" class="form-box hidden">
+    <h2>Đăng ký</h2>
+    <input type="text" id="regName" placeholder="Tên của bạn">
+    <input type="email" id="regEmail" placeholder="Email">
+    <input type="password" id="regPass" placeholder="Mật khẩu">
+    <button onclick="register()">Tạo tài khoản</button>
+  </div>
+
+  <div id="loginBox" class="form-box hidden">
+    <h2>Đăng nhập</h2>
+    <input type="email" id="loginEmail" placeholder="Email">
+    <input type="password" id="loginPass" placeholder="Mật khẩu">
+    <button onclick="login()">Đăng nhập</button>
+  </div>
+
+  <section>
+    <h2>✨ Giới thiệu Quân Đoàn</h2>
+    <p>Chào mừng bạn đến với Quân Đoàn Free Fire YTB丶ThinhTC ! Chúng tôi là một gia đình đoàn kết, cùng nhau gặt hái vinh quang trong tất cả trận chiến!</p>
+  </section>
+
+  <section>
+    <h2>👑 Thành viên tiêu biểu</h2>
+    <button id="joinBtn" class="hidden" onclick="joinClan()">Ghi danh vào Quân Đoàn</button>
+    <div class="member-list" id="memberList"></div>
+  </section>
+
+  <script>
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+    let members = JSON.parse(localStorage.getItem("members")) || [];
+    let currentUser = null;
+
+    function saveUsers() {
+      localStorage.setItem("users", JSON.stringify(users));
+      localStorage.setItem("members", JSON.stringify(members));
+    }
+
+    function showRegister() {
+      document.getElementById("registerBox").classList.remove("hidden");
+      document.getElementById("loginBox").classList.add("hidden");
+    }
+
+    function showLogin() {
+      document.getElementById("loginBox").classList.remove("hidden");
+      document.getElementById("registerBox").classList.add("hidden");
+    }
+
+    function register() {
+      const name = document.getElementById("regName").value;
+      const email = document.getElementById("regEmail").value;
+      const pass = document.getElementById("regPass").value;
+      if (!name || !email || !pass) return alert("Vui lòng điền đầy đủ thông tin");
+      if (users.find(u => u.email === email)) return alert("Email đã tồn tại!");
+      users.push({ name, email, pass });
+      saveUsers();
+      alert("Đăng ký thành công! Hãy đăng nhập.");
+      showLogin();
+    }
+
+    function login() {
+      const email = document.getElementById("loginEmail").value;
+      const pass = document.getElementById("loginPass").value;
+      const user = users.find(u => u.email === email && u.pass === pass);
+      if (!user) return alert("Sai email hoặc mật khẩu");
+      currentUser = user;
+      document.getElementById("username").textContent = user.name;
+      document.getElementById("authButtons").classList.add("hidden");
+      document.getElementById("registerBox").classList.add("hidden");
+      document.getElementById("loginBox").classList.add("hidden");
+      document.getElementById("welcomeBox").classList.remove("hidden");
+      document.getElementById("joinBtn").classList.remove("hidden");
+      renderMembers();
+    }
+
+    function logout() {
+      currentUser = null;
+      document.getElementById("authButtons").classList.remove("hidden");
+      document.getElementById("welcomeBox").classList.add("hidden");
+      document.getElementById("joinBtn").classList.add("hidden");
+    }
+
+    function joinClan() {
+      if (!currentUser) return;
+      if (!members.includes(currentUser.name)) {
+        members.push(currentUser.name);
+        saveUsers();
+        renderMembers();
+        alert("Đã ghi danh vào Quân Đoàn!");
+      } else {
+        alert("Bạn đã ghi danh rồi!");
+      }
+    }
+
+    function renderMembers() {
+      const container = document.getElementById("memberList");
+      container.innerHTML = "";
+      members.forEach(name => {
+        const div = document.createElement("div");
+        div.className = "member-card";
+        div.textContent = "YTB丶" + name;
+        container.appendChild(div);
+      });
+    }
+
+    window.onload = renderMembers;
+
+    
+  </script>
+<section class="honor-top">
+  <h2>🏆 TOP 7 Thành Viên Danh Dự</h2>
+  <div class="honor-list">
+    <div class="honor-card top1"><span class="rank">🥇</span> YTB丶ThinhTC <span class="score">12000 điểm</span></div>
+    <div class="honor-card top2"><span class="rank">🥈</span> YTB丶LôcMor <span class="score">8200 điểm</span></div>
+    <div class="honor-card top3"><span class="rank">🥉</span> YTB丶6k <span class="score">7800 điểm</span></div>
+    <div class="honor-card"><span class="rank">4️⃣</span> YTB丶Duxx_Zz <span class="score">6250 điểm</span></div>
+      <div class="honor-card"><span class="rank">5️⃣</span> YTB丶Lâm <span class="score">6000 điểm</span></div>
+      <div class="honor-card"><span class="rank">6️⃣</span> YTB丶Sơn <span class="score">5823 điểm</span></div>
+    <div class="honor-card"><span class="rank">7️⃣</span> YTB丶Giang <span class="score">4382 điểm</span></div>
+    <div class="honor-card"><span class="rank">8️⃣</span> YTB丶Nguyên <span class="score">3039 điểm</span></div>
+      <div class="honor-card"><span class="rank">9️⃣</span> YTB丶DuHungn <span class="score">2020 điểm</span></div>
+
+
+  </div>
+<script>
+function toggleChatBox() {
+  alert("Đi tới khung chat 💬 hoặc mở chat popup tại đây.");
+}
+</script>
+
+</script>
+</body>
+</html>
